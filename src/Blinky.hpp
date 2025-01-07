@@ -10,11 +10,11 @@
 
 namespace saftlib {
 
-class BlinkySDB :public SdbDevice {
+class BlinkySDB : public SdbDevice {
 
 public:
-	etherbone::address_t start_addr;
 	BlinkySDB(etherbone::Device &device);
+	etherbone::address_t get_start_adr();
 
 };
 

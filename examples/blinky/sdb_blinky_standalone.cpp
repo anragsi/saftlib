@@ -21,9 +21,9 @@ int main(int argc, char const *argv[])
 
 
 		saftlib::BlinkySDB blinky_sdb(device);
-		etherbone::address_t addr;
-
-		blinky_sdb.start_addr;
+		
+		eb_address_t addr;
+		addr = blinky_sdb.get_start_adr();
 
 		std::cout << &addr;
 
