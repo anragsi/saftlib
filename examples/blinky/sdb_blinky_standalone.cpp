@@ -1,31 +1,27 @@
-#include <iostream>
-
-#include <Blinky.hpp>
-
+#include "sdb_blinky_standalone.hpp"
+#include <saftlib/BlinkySDB.hpp>
 #define DEV_PATH "dev/ttyUSB0"
 
 
 int main(int argc, char const *argv[])
 {
-	// if (argc != 2 && argc != 4) {
-	// 	std::cerr << "usage: " << argv[0] << " eb-path [ <io-name> <freq[Hz]> ]" << std::endl;
-	// 	return 0;
-	// }
-
-
+	try {
 		/* instantiate socket and device */
 		etherbone::Socket socket;
 		socket.open();
 		etherbone::Device device;
-		device.open(socket, "dev/ttyUSB0");
-
+		device.open(socket, DEV_PATH);
 
 		saftlib::BlinkySDB blinky_sdb(device);
-		
-		eb_address_t addr;
-		addr = blinky_sdb.get_start_adr();
 
-		std::cout << &addr;
+		saftlib::BlinkySDB::Blinking blink_mode;
+		blink_mode = saftlib::BlinkySDB::FAST;
+		blinky_sdb.SetBlinkMode(blink_mode);
+
+	} catch(etherbone::exception_t &e) {
+		std::cerr << "Error: " << e << std::endl;
+		return 1;
+	}
 
 	return 0;
 }

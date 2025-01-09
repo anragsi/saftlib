@@ -141,7 +141,7 @@ libsaft_service_la_SOURCES =\
 	src/TimingReceiverAddon.cpp                              \
 	src/CommonFunctions.cpp                                  \
 	src/create_service.cpp                                   \
- 	src/Blinky.cpp 
+ 	src/BlinkySDB.cpp 
 
 libsaft_service_includedir = $(includedir)/saftlib
 libsaft_service_include_HEADERS =   \
@@ -212,7 +212,7 @@ libsaft_service_include_HEADERS =   \
  	src/OutputCondition_Service.hpp                       \
  	src/Input_Service.hpp                                 \
  	src/TimingReceiver_Service.hpp       				  \
- 	src/Blinky.hpp               
+ 	src/BlinkySDB.hpp               
 
 libsaft_proxy_la_LDFLAGS = -version-info @SAFTD_API@:@SAFTD_REVISION@:@SAFTD_MINOR@ 
 libsaft_proxy_la_LIBADD  =  $(SIGCPP_LIBS) 
